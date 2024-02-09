@@ -140,4 +140,37 @@ public class SortingAlgorithms {
         char digitChar = str.charAt(length - digitPlace);
         return Character.getNumericValue(digitChar);
     }
+
+
+    public static <T extends Comparable<T>> void chooseThePairSort(T[] arr) {
+        int n = arr.length;
+
+        for (int i = 0; i < n / 2; i++) {
+            int minIndex = i;
+            int maxIndex = i;
+
+            for (int j = i + 1; j < n - i; j++) {
+                if (arr[j].compareTo(arr[minIndex]) < 0) {
+                    minIndex = j;
+                } else if (arr[j].compareTo(arr[maxIndex]) > 0) {
+                    maxIndex = j;
+                }
+            }
+
+            swap(arr, i, minIndex);
+
+            if (i == maxIndex) {
+                maxIndex = minIndex;
+            }
+
+
+            swap(arr, n - i - 1, maxIndex);
+        }
+    }
+
+    private static <T extends Comparable<T>> void swap(T[] arr, int i, int j) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
 }
