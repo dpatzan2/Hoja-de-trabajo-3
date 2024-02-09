@@ -83,4 +83,5 @@ public class SortingConsoleUI {
         }
         System.out.println("]");
     }
+
 }
