@@ -131,4 +131,13 @@ public class SortingAlgorithms {
         }
     }
 
+    private static <T extends Comparable<T>> int getDigit(T item, int digitPlace) {
+        String str = String.valueOf(item);
+        int length = str.length();
+        if (digitPlace > length) {
+            return 0;
+        }
+        char digitChar = str.charAt(length - digitPlace);
+        return Character.getNumericValue(digitChar);
+    }
 }
